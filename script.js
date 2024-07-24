@@ -1,7 +1,8 @@
-let scene = 1;
-let playButton, crossiantButton, donutButton, cupcakeButton, pricesButton;
+let scene = "start";
+let playButton, crossiantButton, donutButton, cupcakeButton, pricesButton, orderButton;
 let crossiantImg, donutImg, cupcakeImg;
 let matchaButton, hotCocoaButton, bobaButton, matchaImg, hotCocoaImg, bobaImg;
+// let buyCrossiantButton, buyDonut, buyCupcake, buyBoba, buyMatcha, buyHotCocoa;
 function preload(){
   donutImg = loadImage('assets/donut.png')
   crossiantImg = loadImage('assets/crossiant.png')
@@ -22,13 +23,21 @@ function setup() {
   playButton.text = "MENU";
   playButton.textSize = 30;
 
-  //play button
+  //prices button
   stroke(10);
   pricesButton = new Sprite(-200, -288, 110, 50, "k");
   pricesButton.color = color("white");
   pricesButton.text = "PRICES";
   pricesButton.textSize = 30;
 
+  //order button
+  stroke(10);
+  orderButton = new Sprite(-200, -288, 110, 50, "k");
+  orderButton.color = color("white");
+  orderButton.text = "ORDER \nFOOD";
+  orderButton.textSize = 20;
+
+ 
   crossiantButton = new Sprite(crossiantImg, -200,-50,1, 1);
   crossiantImg.resize(125, 125);
 
@@ -46,10 +55,21 @@ function setup() {
 
   hotCocoaButton = new Sprite(hotCocoaImg, -200,-50,1, 1);
   hotCocoaImg.resize(175, 125);
+
+  // stroke(10);
+  // buyCrossiantButton = new Sprite(-200,-50,1, 1, "k");
+  // buyCrossiantButton.color = color("pink");
+  // buyCrossiantButton.text = "ORDER";
+  // buyCrossiantButton.textSize = 30;
+
+  // buyDonut = new Sprite(-200,-50,1, 1);
+  // buyDonut.color = color("pink");
+  // buyDonut.text = "ORDER";
+  // buyDonut.textSize = 30;
 }
 
 function draw() {
-  if(scene ===1) {
+  if(scene ==="start") {
     background(56, 191, 240);
     noStroke();
 
@@ -84,14 +104,14 @@ function draw() {
 
     //button
     if (playButton.mouse.presses()) {
-      scene = 2;
+      scene = "menu";
     }
   }
-  if(scene===2) {
+  if(scene==="menu") {
       background("pink");
       playButton.pos = {x:-500, y:-500}
       pricesButton.pos = {x:315, y:100}
-      fill("hotpink");
+      fill("lavender");
       textSize(20);
       text("hi everyone!! welcome to the cozy\n cafe, here's our menu!",50, 50);
       crossiantButton.pos = {x:75, y:180}
@@ -103,11 +123,12 @@ function draw() {
     
     //button
     if (pricesButton.mouse.presses()) {
-      scene = 3;
+      scene = "prices";
     }
   }
-  if(scene==3) {
+  if(scene=="prices") {
     background("hotpink");
+    //orderButton.pos = {x:315, y:100}
     fill("pink");
     textSize(20);
     text("prices!! dw, everything is on the house \n for our favorite customers (you!!!)",50, 50);
@@ -127,6 +148,23 @@ function draw() {
     text("MATCHA:\n $6", 150, 300);
     text("HOT COCOA:\n $6", 270, 300);
 
-
+    // //button
+    // if (orderButton.mouse.presses()) {
+    //   scene = 4;
+    // }
   }
+  // if(scene===4) {
+  //   background("purple")
+  //   fill("pink");
+  //   textSize(20);
+  //   text("order whatever you want )",50, 50);
+  //   orderButton.pos = {x:-315, y:100}
+  //   fill(255);
+  //   text("CROSSIANT:\n $4", 20, 160);
+  //   text("DONUT:\n $2", 160, 160);
+  //   text("CUPCAKE:\n $5", 290, 160);
+  //   // buyCrossiantButton.pos = {x:155, y:215}
+
+    
+  // }
 }
